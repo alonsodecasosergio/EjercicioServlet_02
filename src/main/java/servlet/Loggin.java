@@ -59,10 +59,13 @@ public class Loggin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		
+		//OBTIENE LOS PARAMETROS DE LA URL
 		String parametroUsuario = request.getParameter("login");
 		String parametroPassword = request.getParameter("password");
 		
+		logger.debug("Intento de acceso con: " + parametroUsuario + " " + parametroPassword);
+		
+		//LOS PASA AL METODO QUE COMPROBARA SI SON CORRECTOS
 		comprobarUsuario(parametroUsuario, parametroPassword, response);
 		
 	}
@@ -77,28 +80,39 @@ public class Loggin extends HttpServlet {
 	
 	public void comprobarUsuario(String usuario, String password, HttpServletResponse response) throws IOException {
 		
+		//OBTENCION DEL USUARIO CON ESE EMAIL
 		Usuarios user = UsuariosDAO.getUsuarioToEmail(session, usuario);
 		PrintWriter out = response.getWriter();
 		
+		//SI EL USUARIO NO EXISTE SALTA UN MENSAJE SI EXISTE COMPRUEBA EL USUARIO Y CONTRASEÑA
 		if(user != null) {
 			
 			if(user.getEmail().equals(usuario) && user.getClave().equals(password)) {
 				
-				
+				//SI ESTA BIEN ESCRIBE UN MENSAJE CON EL NOMBRE DEL USUARIO
 				printResponse(out, "Bienvenido " + user.getNombre());
-			}else {
 				
+				logger.debug("El usuario ha sido introducido correctamente");
+				
+			}else {
+				//SI NO ES CORRECTO INFORMA DE QUE NO PUEDE ACCEDER
 				printResponse(out, "No puede acceder a la aplicación");
+				
+				logger.debug("El usuario no es correcto");
 			}
 			
 		}else {
+
+			//SI NO ES CORRECTO INFORMA DE QUE NO PUEDE ACCEDER
 			printResponse(out, "No puede acceder a la aplicación");
+			logger.debug("El usuario no es correcto");
 		}
 		
 	}
 	
 	private PrintWriter printResponse(PrintWriter out, String texto) {
 		
+		//CODIGO HTML EL CUAL ESCRIBE EN PANTALLA
 		PrintWriter res = out;
 		
 		res.println("<html>");
