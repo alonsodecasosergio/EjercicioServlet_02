@@ -35,7 +35,7 @@ public abstract class UsuariosDAO {
 	//OBTENCION DE USUARIO SEGUN SU ID
 	public static Usuarios getUsuario(Session s, int idUsuario) {
 		
-		logger.debug("Peticion del rol con id: " + idUsuario);
+		logger.debug("Peticion del usuario con id: " + idUsuario);
 		
 		String hQuery = " from Usuarios u where u.id = :id";
 		Usuarios usuario = s.createQuery(hQuery, Usuarios.class)
@@ -53,6 +53,20 @@ public abstract class UsuariosDAO {
 		s.delete(usuario);
 		
 		logger.debug("Borrado del usuario: " + usuario.getId() + " " + usuario.getNombre());
+	}
+	
+	public static Usuarios getUsuarioToEmail(Session s, String email) {
+		
+		logger.debug("Peticion de usuario con email: " + email);
+		
+		String hQuery = " from Usuarios u where u.email = :email";
+		Usuarios usuario = s.createQuery(hQuery, Usuarios.class)
+									.setParameter("email", email)
+									.setMaxResults(1)
+									.uniqueResult();
+		return usuario;
+		
+		
 	}
 	
 	//ACTUALIZACION DEL OBJETO USUARIO
