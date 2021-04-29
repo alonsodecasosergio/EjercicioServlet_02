@@ -30,7 +30,7 @@ import dataModelUtils.HibernateUtil;
 public class AltaUsuarios extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static Logger logger = LogManager.getLogger(Loggin.class);
+	private static Logger logger = LogManager.getLogger(AltaUsuarios.class);
 	
 	static SessionFactory sessionFactory;
 	static Session session;
@@ -59,7 +59,18 @@ public class AltaUsuarios extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub	
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		logger.debug("Inserccion de un nuevo usuario");
 		
 		int idrol = Integer.parseInt(request.getParameter("idRol"));
 		List<Roles> roles = RolesDAO.getAllRoles(session);
@@ -67,6 +78,7 @@ public class AltaUsuarios extends HttpServlet {
 		
 		System.out.println("-------------------------" + roles.size());
 		
+		//RECORRIDO DE LOS ROLEs HASTA ENCONTRAR EL SOLICITADO
 		for(int i = 0; i < roles.size(); i++){
 			
 			if(roles.get(i).getId() == idrol) {
@@ -76,7 +88,7 @@ public class AltaUsuarios extends HttpServlet {
 			}
 		}
 		
-		
+		//CREAR EL OBJETO USUARIO CON LOS PARAMETROS PASADOS
 		String email = request.getParameter("email");
 		String clave = request.getParameter("clave");
 		String nombre = request.getParameter("nombre");
@@ -96,21 +108,13 @@ public class AltaUsuarios extends HttpServlet {
 			
 			printResponse(out, "Usuario registrado");
 			
+			logger.debug("USUARIO REGISTRADO");
+			
 		}else {
 			
 			printResponse(out, "Error al registrar el usuario");
+			logger.error("Error al registrar el usuario");
 		}
-		
-		
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 	
 	public boolean insertarBBDD(Usuarios user) {
@@ -119,6 +123,8 @@ public class AltaUsuarios extends HttpServlet {
 		
 		try {
 			
+			//CREACION DE LA TRANSACION Y INSERCCION DEL USUARIO EN LA BASE DE DATOS
+			
 			tx = session.beginTransaction();
 			UsuariosDAO.insertUsuarios(session, user);
 			tx.commit();
@@ -126,6 +132,7 @@ public class AltaUsuarios extends HttpServlet {
 			
 		}catch(Exception e) {
 			
+			//SI HA HABIDO ALGUN ERROR SE HACE UN ROLLBACK
 			if(tx != null) {
 				
 				tx.rollback();
