@@ -27,7 +27,7 @@ import dataModelUtils.HibernateUtil;
 public class AltasRoles extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	private static Logger logger = LogManager.getLogger(Loggin.class);
+	private static Logger logger = LogManager.getLogger(AltasRoles.class);
 	
 	static SessionFactory sessionFactory;
 	static Session session;
@@ -80,7 +80,10 @@ public class AltasRoles extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		
+		logger.debug("Inserccion de un nuevo rol");
+		
+		//CREACION DEL TRANSACTION PARA REALIZAR LA INSERCCION
 		Transaction tx = session.beginTransaction();
 		PrintWriter out = response.getWriter();
 		
@@ -88,9 +91,13 @@ public class AltasRoles extends HttpServlet {
 			
 			String nombre = request.getParameter("nombre");
 			
+			//CREACION DEL OBJETO ROL CON LOS PARAMETROS OBTENIDOS
 			Roles rol = new Roles(nombre);			
 			
+			//INSERCCION DEL ROL EN LA BASE DE DATOS
 			RolesDAO.insertRol(session, rol);
+			
+			logger.debug("Rol registrado como: " + nombre);
 			
 			printResponse(out, "Rol registrado");
 			
@@ -100,6 +107,7 @@ public class AltasRoles extends HttpServlet {
 			
 			if(tx != null) {
 				 tx.rollback();
+				 logger.debug("Error al registrar el rol");
 				 printResponse(out, "Error al registrar el rol");
 			}
 		}
