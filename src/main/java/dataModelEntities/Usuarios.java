@@ -9,7 +9,7 @@ package dataModelEntities;
 public class Usuarios implements java.io.Serializable {
 
 	private Integer id;
-	private Roles roles;
+	private int rol;
 	private String email;
 	private String clave;
 	private String nombre;
@@ -24,9 +24,9 @@ public class Usuarios implements java.io.Serializable {
 	public Usuarios() {
 	}
 
-	public Usuarios(Roles roles, String email, String clave, String nombre, String apellido1, String apellido2,
+	public Usuarios(int rol, String email, String clave, String nombre, String apellido1, String apellido2,
 			String direccion, String localidad, String provincia, String telefono, String dni) {
-		this.roles = roles;
+		this.rol = rol;
 		this.email = email;
 		this.clave = clave;
 		this.nombre = nombre;
@@ -47,12 +47,12 @@ public class Usuarios implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Roles getRoles() {
-		return this.roles;
+	public int getRol() {
+		return this.rol;
 	}
 
-	public void setRoles(Roles roles) {
-		this.roles = roles;
+	public void setRol(int rol) {
+		this.rol = rol;
 	}
 
 	public String getEmail() {
@@ -134,5 +134,13 @@ public class Usuarios implements java.io.Serializable {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+	
+	@Override
+	public String toString() {
+		return "Usuarios [id=" + id + ", rol=" + rol + ", email=" + email + ", clave=" + clave + ", nombre=" + nombre
+				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", direccion=" + direccion + ", localidad="
+				+ localidad + ", provincia=" + provincia + ", telefono=" + telefono + ", dni=" + dni + "]";
+	}
+
 
 }

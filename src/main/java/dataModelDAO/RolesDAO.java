@@ -20,7 +20,7 @@ public abstract class RolesDAO {
 	}
 	
 	//OBTENCION DE TODOS LOS ROLES DE LA TABLA
-	public static List<Roles> getAllRoles(Session s, Roles rol){
+	public static List<Roles> getAllRoles(Session s){
 		
 		logger.debug("Obtencion de los datos de la tabla roles");
 		
@@ -35,11 +35,8 @@ public abstract class RolesDAO {
 	public static Roles getRol(Session s, int codigoRol) {
 		logger.debug("Peticion del rol con id: " + codigoRol);
 		
-		String hQuery = " from Roles r where r.id = :id";
-		Roles rol = s.createQuery(hQuery, Roles.class)
-									.setParameter("id", codigoRol)
-									.setMaxResults(1)
-									.uniqueResult();
+		Roles rol = s.get(Roles.class, codigoRol);
+		
 		return rol;
 		
 	}
