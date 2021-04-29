@@ -17,7 +17,7 @@ public abstract class UsuariosDAO {
 	public static void insertUsuarios(Session s, Usuarios usuario) {
 		
 		s.save(usuario);
-		logger.debug("Inserccion del rol con el codigo: " + usuario.getId());
+		logger.debug("Inserccion del usuario con el codigo: " + usuario.getId());
 
 	}
 	
