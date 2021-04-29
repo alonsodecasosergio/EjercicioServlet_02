@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -54,16 +55,24 @@ public class AltasRoles extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String nombre = request.getParameter("nombre");
 		
-		Roles rol = new Roles(nombre);
+	}
+	
+	private PrintWriter printResponse(PrintWriter out, String texto) {
 		
-		Transaction tx = session.beginTransaction();
+		//CODIGO HTML EL CUAL ESCRIBE EN PANTALLA
+		PrintWriter res = out;
 		
-		RolesDAO.insertRol(session, rol);
+		res.println("<html>");
+		res.println("<title>Ejercicio Serverlet | Sergio Alonso</title>");
+		res.println("<body>");
+		res.println("<h1>" + texto + "</h1>");		
+
+		res.println("</table>");
+		res.println("</body>");
+		res.println("</html>");
 		
-		tx.commit();
-		
+		return res;
 	}
 
 	/**
@@ -71,7 +80,29 @@ public class AltasRoles extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		Transaction tx = session.beginTransaction();
+		PrintWriter out = response.getWriter();
+		
+		try {
+			
+			String nombre = request.getParameter("nombre");
+			
+			Roles rol = new Roles(nombre);			
+			
+			RolesDAO.insertRol(session, rol);
+			
+			printResponse(out, "Rol registrado");
+			
+			tx.commit();
+			
+		}catch(Exception e) {
+			
+			if(tx != null) {
+				 tx.rollback();
+				 printResponse(out, "Error al registrar el rol");
+			}
+		}
 	}
 
 }
