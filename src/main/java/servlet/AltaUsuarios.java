@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -61,7 +62,20 @@ public class AltaUsuarios extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		int idrol = Integer.parseInt(request.getParameter("idRol"));
-		Roles rol = RolesDAO.getRol(session, idrol);
+		List<Roles> roles = RolesDAO.getAllRoles(session);
+		Roles rol = null;
+		
+		System.out.println("-------------------------" + roles.size());
+		
+		for(int i = 0; i < roles.size(); i++){
+			
+			if(roles.get(i).getId() == idrol) {
+				
+				rol = roles.get(i);
+				break;
+			}
+		}
+		
 		
 		String email = request.getParameter("email");
 		String clave = request.getParameter("clave");
