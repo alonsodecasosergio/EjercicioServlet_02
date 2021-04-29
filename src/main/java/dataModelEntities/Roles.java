@@ -17,6 +17,10 @@ public class Roles implements java.io.Serializable {
 
 	public Roles() {
 	}
+	
+	public Roles(String rol) {
+		this.rol = rol;
+	}
 
 	public Roles(String rol, Set usuarioses) {
 		this.rol = rol;
