@@ -75,7 +75,7 @@ public abstract class UsuariosDAO {
 		Usuarios usuario = s.get(Usuarios.class, idUsuario);
 		
 		usuario.setId(nuevoUsuario.getId());
-		usuario.setRoles(nuevoUsuario.getRoles());
+		usuario.setRol(nuevoUsuario.getRol());
 		usuario.setEmail(nuevoUsuario.getEmail());
 		usuario.setClave(nuevoUsuario.getClave());
 		usuario.setNombre(nuevoUsuario.getNombre());

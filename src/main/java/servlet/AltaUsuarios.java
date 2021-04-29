@@ -72,23 +72,9 @@ public class AltaUsuarios extends HttpServlet {
 		
 		logger.debug("Inserccion de un nuevo usuario");
 		
-		int idrol = Integer.parseInt(request.getParameter("idRol"));
-		List<Roles> roles = RolesDAO.getAllRoles(session);
-		Roles rol = null;
-		
-		System.out.println("-------------------------" + roles.size());
-		
-		//RECORRIDO DE LOS ROLEs HASTA ENCONTRAR EL SOLICITADO
-		for(int i = 0; i < roles.size(); i++){
-			
-			if(roles.get(i).getId() == idrol) {
-				
-				rol = roles.get(i);
-				break;
-			}
-		}
-		
 		//CREAR EL OBJETO USUARIO CON LOS PARAMETROS PASADOS
+		int rol = Integer.parseInt(request.getParameter("rol"));
+		
 		String email = request.getParameter("email");
 		String clave = request.getParameter("clave");
 		String nombre = request.getParameter("nombre");
@@ -136,7 +122,9 @@ public class AltaUsuarios extends HttpServlet {
 			if(tx != null) {
 				
 				tx.rollback();
+				System.out.println(e.getMessage());
 				return false;
+				
 			}
 		}
 		
