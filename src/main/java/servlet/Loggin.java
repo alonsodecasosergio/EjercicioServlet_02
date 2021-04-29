@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -66,7 +67,7 @@ public class Loggin extends HttpServlet {
 		logger.debug("Intento de acceso con: " + parametroUsuario + " " + parametroPassword);
 		
 		//LOS PASA AL METODO QUE COMPROBARA SI SON CORRECTOS
-		comprobarUsuario(parametroUsuario, parametroPassword, response);
+		comprobarUsuario(parametroUsuario, parametroPassword, response, request);
 		
 	}
 
@@ -78,7 +79,7 @@ public class Loggin extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	public void comprobarUsuario(String usuario, String password, HttpServletResponse response) throws IOException {
+	public void comprobarUsuario(String usuario, String password, HttpServletResponse response, HttpServletRequest request) throws IOException, ServletException {
 		
 		//OBTENCION DEL USUARIO CON ESE EMAIL
 		Usuarios user = UsuariosDAO.getUsuarioToEmail(session, usuario);
@@ -90,41 +91,23 @@ public class Loggin extends HttpServlet {
 			if(user.getEmail().equals(usuario) && user.getClave().equals(password)) {
 				
 				//SI ESTA BIEN ESCRIBE UN MENSAJE CON EL NOMBRE DEL USUARIO
-				printResponse(out, "Bienvenido " + user.getNombre());
 				
 				logger.debug("El usuario ha sido introducido correctamente");
 				
-			}else {
-				//SI NO ES CORRECTO INFORMA DE QUE NO PUEDE ACCEDER
-				printResponse(out, "No puede acceder a la aplicación");
+				HttpSession session = request.getSession(true);
+				session.setAttribute("clientName", user.getNombre() + " " + user.getApellido1() + " " + user.getApellido2());
+				request.getRequestDispatcher("PanelPrincipal.jsp").forward(request, response);
 				
+			}else {				
 				logger.debug("El usuario no es correcto");
 			}
 			
 		}else {
 
 			//SI NO ES CORRECTO INFORMA DE QUE NO PUEDE ACCEDER
-			printResponse(out, "No puede acceder a la aplicación");
 			logger.debug("El usuario no es correcto");
 		}
 		
-	}
-	
-	private PrintWriter printResponse(PrintWriter out, String texto) {
-		
-		//CODIGO HTML EL CUAL ESCRIBE EN PANTALLA
-		PrintWriter res = out;
-		
-		res.println("<html>");
-		res.println("<title>Ejercicio Serverlet | Sergio Alonso</title>");
-		res.println("<body>");
-		res.println("<h1>" + texto + "</h1>");		
-
-		res.println("</table>");
-		res.println("</body>");
-		res.println("</html>");
-		
-		return res;
 	}
 
 }

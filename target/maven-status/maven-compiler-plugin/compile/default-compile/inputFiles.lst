@@ -1,11 +1,8 @@
 C:\Users\Formacion\Desktop\EjercicioServlet\EjercicioServlet_02\src\main\java\dataModelUtils\HibernateUtil.java
 C:\Users\Formacion\Desktop\EjercicioServlet\EjercicioServlet_02\src\main\java\dataModelDAO\UsuariosDAO.java
 C:\Users\Formacion\Desktop\EjercicioServlet\EjercicioServlet_02\src\main\java\dataModelEntities\Usuarios.java
-<<<<<<< HEAD
-C:\Users\Formacion\Desktop\EjercicioServlet\EjercicioServlet_02\src\main\java\servlet\AltasRoles.java
-=======
 C:\Users\Formacion\Desktop\EjercicioServlet\EjercicioServlet_02\src\main\java\servlet\AltaUsuarios.java
->>>>>>> features_altas_usuarios
+C:\Users\Formacion\Desktop\EjercicioServlet\EjercicioServlet_02\src\main\java\servlet\AltasRoles.java
 C:\Users\Formacion\Desktop\EjercicioServlet\EjercicioServlet_02\src\main\java\servlet\Loggin.java
 C:\Users\Formacion\Desktop\EjercicioServlet\EjercicioServlet_02\src\main\java\dataModelDAO\RolesDAO.java
 C:\Users\Formacion\Desktop\EjercicioServlet\EjercicioServlet_02\src\main\java\dataModelEntities\Roles.java
