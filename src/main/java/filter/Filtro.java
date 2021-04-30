@@ -49,7 +49,7 @@ public class Filtro implements Filter {
 			res.sendRedirect("CerrarSesion");
 		} else {
 			// redirige al login
-			res.sendRedirect("/Login.jsp");
+			res.sendRedirect("/login.html");
 		}
 	}
 
