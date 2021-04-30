@@ -6,5 +6,6 @@ dataModelEntities\Roles.class
 dataModelUtils\HibernateUtil.class
 servlet\AltaUsuarios.class
 servlet\VistaRoles.class
+servlet\CerrarSesion.class
 dataModelEntities\Usuarios.class
 servlet\VistaUsuarios.class

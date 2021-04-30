@@ -23,7 +23,7 @@
 			<form id="botonesCabecera" action="" method="post">
 					
 				<button type="submit" formaction="PanelPrincipal.jsp">Volver</button>
-				<button type="submit" formaction="">Cerrar Sesion</button>
+				<button type="submit" formaction="CerrarSesion">Cerrar Sesion</button>
 			</form>
 
 		</header>
