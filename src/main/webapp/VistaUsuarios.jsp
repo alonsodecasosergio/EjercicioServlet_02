@@ -9,7 +9,7 @@
 		<title>Alta Usuarios</title>
 	</head>
 	<body>			
-		<h3>Bienvenido JSP, ${sessionScope.clientName}.</h3>
+		<%@ include file="Cabecera.jsp" %>
 		
 		<form action="" method="post">
 			<table border="2">

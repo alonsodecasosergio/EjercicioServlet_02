@@ -8,8 +8,8 @@
 		<meta charset="UTF-8">
 		<title>Vista Roles</title>
 	</head>
-	<body>			
-		<h3>Bienvenido JSP, ${sessionScope.clientName}.</h3>
+	<body>		
+		<%@ include file="Cabecera.jsp" %>	
 		
 		<form action="" method="post">
 			<table border="2">

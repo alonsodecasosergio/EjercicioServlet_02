@@ -8,7 +8,7 @@
 		<title>Alta Usuarios</title>
 	</head>
 	<body>
-		<h3>Bienvenido JSP, ${sessionScope.clientName}.</h3>
+		<%@ include file="Cabecera.jsp" %>
 		
 		<form id="altaUsuarios" action="AltaRoles" method="post">
 			<input type="text" name="nombre" placeholder="Nombre" required>
