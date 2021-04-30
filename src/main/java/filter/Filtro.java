@@ -43,7 +43,7 @@ public class Filtro implements Filter {
 		HttpSession session = req.getSession(false);
 		String path = req.getRequestURI(); 
 		
-		if (session != null || path.endsWith("Login.jsp")) {
+		if (session != null || path.endsWith("Login.hmtl")) {
 			// pasa la request al siguiente filtro si existe, si no al servlet
 			chain.doFilter(request, response);
 			res.sendRedirect("CerrarSesion");
