@@ -2,6 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -94,8 +97,12 @@ public class Loggin extends HttpServlet {
 				
 				logger.debug("El usuario ha sido introducido correctamente");
 				
+				Date date = new Date();
+				DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+				System.out.println("Hora y fecha: "+hourdateFormat.format(date));
+				
 				HttpSession session = request.getSession(true);
-				session.setAttribute("clientName", user.getNombre() + " " + user.getApellido1() + " " + user.getApellido2());
+				session.setAttribute("clientName", user.getNombre() + " " + user.getApellido1() + " " + user.getApellido2() + "->" + hourdateFormat.format(date));
 				request.getRequestDispatcher("PanelPrincipal.jsp").forward(request, response);
 				
 			}else {				
