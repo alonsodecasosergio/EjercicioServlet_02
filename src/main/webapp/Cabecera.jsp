@@ -17,7 +17,7 @@
 		<header id="main-header">
 		
 			<a id="logo-header">
-				<span class="site-name">Bienvenido JSP, ${sessionScope.clientName}.</span>
+				<span class="site-name">${sessionScope.clientName}.</span>
 			</a> <!-- / #logo-header -->
 	
 			<form id="botonesCabecera" action="" method="post">

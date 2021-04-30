@@ -14,12 +14,18 @@
         </style>
 	</head>
 	<body>
-		<div id="cabecera">
-			<h3>Bienvenido JSP, ${sessionScope.clientName}.</h3>
-			<form action="" method="post">
-				<button type="submit" formaction="">Cerrar Sesion</button>
+		<header id="main-header">
+		
+			<a id="logo-header">
+				<span class="site-name">Bienvenido JSP, ${sessionScope.clientName}.</span>
+			</a> <!-- / #logo-header -->
+	
+			<form id="botonesCabecera" action="" method="post">
+					
 				<button type="submit" formaction="PanelPrincipal.jsp">Volver</button>
+				<button type="submit" formaction="">Cerrar Sesion</button>
 			</form>
-		</div>
+
+		</header>
 	</body>
 </html>

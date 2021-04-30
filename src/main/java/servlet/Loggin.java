@@ -20,7 +20,9 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import dataModelDAO.RolesDAO;
 import dataModelDAO.UsuariosDAO;
+import dataModelEntities.Roles;
 import dataModelEntities.Usuarios;
 import dataModelUtils.HibernateUtil;
 
@@ -101,8 +103,10 @@ public class Loggin extends HttpServlet {
 				DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
 				System.out.println("Hora y fecha: "+hourdateFormat.format(date));
 				
+				Roles rol = RolesDAO.getRol(session, user.getRol());
+				
 				HttpSession session = request.getSession(true);
-				session.setAttribute("clientName", user.getNombre() + " " + user.getApellido1() + " " + user.getApellido2() + "->" + hourdateFormat.format(date));
+				session.setAttribute("clientName", rol.getRol() + "  |  " +  user.getNombre() + " " + user.getApellido1() + " " + user.getApellido2() + " | " + hourdateFormat.format(date));
 				request.getRequestDispatcher("PanelPrincipal.jsp").forward(request, response);
 				
 			}else {				
