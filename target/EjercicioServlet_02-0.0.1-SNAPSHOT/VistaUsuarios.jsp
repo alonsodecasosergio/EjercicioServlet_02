@@ -14,10 +14,18 @@
 		<form action="" method="post">
 			<table border="2">
 				<tr>
-				    <th>Añadir</th>
-				    <th>Producto</th>
-				    <th>Descripción</th>
-				    <th>Precio</th>
+				    <th>Id</th>
+				    <th>Rol</th>
+				    <th>Email</th>
+				    <th>Clave</th>
+				    <th>Nombre</th>
+				    <th>Primer Apellido</th>
+				    <th>Segundo Apellido</th>
+				    <th>Direccion</th>
+				    <th>Localidad</th>
+				    <th>Provincia</th>
+				    <th>Telefono</th>
+				    <th>DNI</th>
 			    </tr>
 			    <c:forEach items="${sessionScope.usuariosList}" var="usuario" varStatus="status" begin="0" end="${sessionScope.usuariosList.size() - 1}">
 			        <tr>

@@ -5,5 +5,6 @@ servlet\AltasRoles.class
 dataModelEntities\Roles.class
 dataModelUtils\HibernateUtil.class
 servlet\AltaUsuarios.class
+servlet\VistaRoles.class
 dataModelEntities\Usuarios.class
 servlet\VistaUsuarios.class

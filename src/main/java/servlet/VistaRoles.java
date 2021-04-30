@@ -67,7 +67,7 @@ public class VistaRoles extends HttpServlet {
 		List<Roles> rolesList = RolesDAO.getAllRoles(session);
 		
 		HttpSession session = request.getSession(true);
-		session.setAttribute("usuariosList",  rolesList);
+		session.setAttribute("rolesList",  rolesList);
 		request.getRequestDispatcher("VistaRoles.jsp").forward(request, response);
 	}
 
