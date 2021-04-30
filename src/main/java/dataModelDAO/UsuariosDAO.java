@@ -22,7 +22,7 @@ public abstract class UsuariosDAO {
 	}
 	
 	//OBTENCION DE TODOS LOS USUARIOS DE LA TABLA
-	public static List<Usuarios> getAllUsuarios(Session s, Usuarios usuario){
+	public static List<Usuarios> getAllUsuarios(Session s){
 		
 		logger.debug("Obtencion de los datos de la tabla de usuarios");
 		
