@@ -9,5 +9,11 @@
 	</head>
 	<body>
 		<h3>Bienvenido JSP, ${sessionScope.clientName}.</h3>
+		<form action="" method="post">
+			<button type="submit" formaction="AltaUsuarios.jsp">Alta Usuario</button>
+			<button type="submit" formaction="">Alta Roles</button>
+			<button type="submit" formaction="">Listado de usuarios</button>
+			<button type="submit" formaction="">Listado de roles</button>
+		</form>
 	</body>
 </html>
