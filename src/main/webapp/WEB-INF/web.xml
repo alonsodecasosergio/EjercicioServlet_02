@@ -33,4 +33,14 @@
     <servlet-name>AltaProductos</servlet-name>
     <url-pattern>/AltaProductos</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VistaProductos</display-name>
+    <servlet-name>VistaProductos</servlet-name>
+    <servlet-class>servlet.VistaProductos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VistaProductos</servlet-name>
+    <url-pattern>/VistaProductos</url-pattern>
+  </servlet-mapping>
 </web-app>
