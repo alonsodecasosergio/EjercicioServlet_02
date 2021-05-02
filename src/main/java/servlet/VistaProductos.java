@@ -43,7 +43,7 @@ public class VistaProductos extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		
-		logger.info("%1$s: >>>>>> Main execution started.VISUALIZAR ROLES");
+		logger.info("%1$s: >>>>>> Main execution started.VISUALIZAR PRODUCTOS");
 		
 		session = HibernateUtil.getSessionFactory().openSession();
 	}

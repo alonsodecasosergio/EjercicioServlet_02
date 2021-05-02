@@ -44,7 +44,7 @@ public class VistaCategorias extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		
-		logger.info("%1$s: >>>>>> Main execution started.VISUALIZAR ROLES");
+		logger.info("%1$s: >>>>>> Main execution started.VISUALIZAR CATEGORIAS");
 		
 		session = HibernateUtil.getSessionFactory().openSession();
 	}

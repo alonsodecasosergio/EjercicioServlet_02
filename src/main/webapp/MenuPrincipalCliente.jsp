@@ -12,6 +12,8 @@
 		
 		</br>
 		<form action="" method="post">
+		
+			<button type="submit" formaction="VistaProductos">Listado de productos</button>
 		</form>
 	</body>
 </html>
