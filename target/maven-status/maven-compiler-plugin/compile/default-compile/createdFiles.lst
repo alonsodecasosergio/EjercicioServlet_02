@@ -7,7 +7,10 @@ dataModelEntities\Roles.class
 dataModelEntities\Categorias.class
 dataModelUtils\HibernateUtil.class
 servlet\AltaUsuarios.class
+servlet\AltaCategorias.class
 servlet\VistaRoles.class
+dataModelDAO\CategoriasDAO.class
+servlet\VistaCategorias.class
 servlet\CerrarSesion.class
 dataModelEntities\Usuarios.class
 servlet\VistaUsuarios.class

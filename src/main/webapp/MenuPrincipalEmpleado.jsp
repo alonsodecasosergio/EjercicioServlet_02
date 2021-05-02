@@ -14,6 +14,8 @@
 		<form action="" method="post">
 			<button type="submit" formaction="VistaUsuarios">Listado de usuarios</button>
 			<button type="submit" formaction="VistaRoles">Listado de roles</button>
+			<button type="submit" formaction="VistaCategorias">Listado de categorias</button>
+			<button type="submit" formaction="AltaCategoria.jsp">Alta categoria</button>
 		</form>
 	</body>
 </html>
