@@ -1,8 +1,10 @@
 dataModelDAO\UsuariosDAO.class
 servlet\Loggin.class
 dataModelDAO\RolesDAO.class
+dataModelEntities\Productos.class
 servlet\AltasRoles.class
 dataModelEntities\Roles.class
+dataModelEntities\Categorias.class
 dataModelUtils\HibernateUtil.class
 servlet\AltaUsuarios.class
 servlet\VistaRoles.class

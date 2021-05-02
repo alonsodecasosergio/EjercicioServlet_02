@@ -9,5 +9,7 @@
   <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
   <mapping resource="Roles.hbm.xml"/>
   <mapping resource="Usuarios.hbm.xml"/>
+  <mapping resource="Productos.hbm.xml"/>
+  <mapping resource="Categorias.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>
