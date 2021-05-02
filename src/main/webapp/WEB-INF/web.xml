@@ -13,4 +13,14 @@
     <servlet-name>AltaCategorias</servlet-name>
     <url-pattern>/AltaCategorias</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VistaCategorias</display-name>
+    <servlet-name>VistaCategorias</servlet-name>
+    <servlet-class>servlet.VistaCategorias</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VistaCategorias</servlet-name>
+    <url-pattern>/VistaCategorias</url-pattern>
+  </servlet-mapping>
 </web-app>
