@@ -23,7 +23,7 @@
 			        
 			        	<td><c:out value="${categoria.id}"></c:out></td>
 			            <td><c:out value="${categoria.nombre}"></c:out></td>           
-			            <td><c:out value="${descripcion.nombre}"></c:out></td>   
+			            <td><c:out value="${categoria.descripcion}"></c:out></td>   
 			        </tr>
 			    </c:forEach>
 			</table>
