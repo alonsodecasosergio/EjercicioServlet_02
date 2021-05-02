@@ -5,7 +5,6 @@ servlet\AltasRoles.class
 dataModelEntities\Roles.class
 dataModelUtils\HibernateUtil.class
 servlet\AltaUsuarios.class
-filter\Filtro.class
 servlet\VistaRoles.class
 servlet\CerrarSesion.class
 dataModelEntities\Usuarios.class

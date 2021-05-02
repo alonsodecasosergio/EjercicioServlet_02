@@ -106,8 +106,21 @@ public class Loggin extends HttpServlet {
 				Roles rol = RolesDAO.getRol(session, user.getRol());
 				
 				HttpSession session = request.getSession(true);
-				session.setAttribute("clientName", rol.getRol() + "  |  " +  user.getNombre() + " " + user.getApellido1() + " " + user.getApellido2() + " | " + hourdateFormat.format(date));
-				request.getRequestDispatcher("PanelPrincipal.jsp").forward(request, response);
+				session.setAttribute("clientRol", rol.getRol());
+				session.setAttribute("clientName", user.getNombre() + " " + user.getApellido1() + " " + user.getApellido2() + " | " + hourdateFormat.format(date));
+				
+				if(rol.getRol().equals("Admin")) {
+					request.getRequestDispatcher("MenuPrincipalAdmin.jsp").forward(request, response);
+					session.setAttribute("Menu", "MenuPrincipalAdmin.jsp");
+					
+				}else if(rol.getRol().equals("Empleado")) {
+					request.getRequestDispatcher("MenuPrincipalEmpleado.jsp").forward(request, response);
+					session.setAttribute("Menu", "MenuPrincipalEmpleado.jsp");
+				}else {
+					
+					request.getRequestDispatcher("MenuPrincipalCliente.jsp").forward(request, response);
+					session.setAttribute("Menu", "MenuPrincipalCliente.jsp");
+				}
 				
 			}else {				
 				logger.debug("El usuario no es correcto");

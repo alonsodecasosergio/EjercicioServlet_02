@@ -17,12 +17,12 @@
 		<header id="main-header">
 		
 			<a id="logo-header">
-				<span class="site-name">${sessionScope.clientName}.</span>
+				<span class="site-name">${sessionScope.clientRol} | ${sessionScope.clientName}.</span>
 			</a> <!-- / #logo-header -->
 	
 			<form id="botonesCabecera" action="" method="post">
 					
-				<button type="submit" formaction="PanelPrincipal.jsp">Volver</button>
+				<button type="submit" formaction=${sessionScope.Menu}>Volver</button>
 				<button type="submit" formaction="CerrarSesion">Cerrar Sesion</button>
 			</form>
 
