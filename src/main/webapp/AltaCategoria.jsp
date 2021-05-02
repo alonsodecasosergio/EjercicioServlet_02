@@ -10,7 +10,7 @@
 	<body>
 		<%@ include file="Cabecera.jsp" %>
 		
-		<form id="altaCategoria" action="" method="post">
+		<form id="altaCategoria" action="AltaCategorias" method="post">
 			<input type="text" name="nombre" placeholder="Nombre" required>
 			<input type="text" name="descripcion" placeholder="Descripcion" required>
 			<button type="submit" title="Registrar" name="Registrar">Registrar Categoria</button>
