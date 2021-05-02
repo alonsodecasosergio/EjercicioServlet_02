@@ -77,8 +77,12 @@ public class AltaProductos extends HttpServlet {
 			String descripcion = request.getParameter("descripcion");
 			double precio = Double.parseDouble(request.getParameter("precio"));
 			int stock = Integer.parseInt(request.getParameter("stock"));
-			Date fechaAlta = new Date(request.getParameter("fechaAlta"));
-			Date fechaBaja = new Date(request.getParameter("fechaBaja"));
+			
+			String[] formatoFA = request.getParameter("fechaAlta").split("-");
+			Date fechaAlta = new Date(Integer.parseInt(formatoFA[0]), Integer.parseInt(formatoFA[1]), Integer.parseInt(formatoFA[2]));
+			
+			String[] formatoFB = request.getParameter("fechaBaja").split("-");
+			Date fechaBaja = new Date(Integer.parseInt(formatoFB[0]), Integer.parseInt(formatoFB[1]), Integer.parseInt(formatoFB[2]));
 			float impuesto = Float.parseFloat(request.getParameter("impuesto"));
 			
 			//CREACION DEL OBJETO PRODUCTO CON LOS PARAMETROS OBTENIDOS
@@ -101,7 +105,7 @@ public class AltaProductos extends HttpServlet {
 			
 			if(tx != null) {
 				 tx.rollback();
-				 logger.debug("Error al registrar la categoria");
+				 logger.debug("Error al registrar el producto");
 			}
 		}
 	}

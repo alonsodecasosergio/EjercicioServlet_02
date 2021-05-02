@@ -29,7 +29,7 @@
 			        
 			        	<td><c:out value="${producto.id}"></c:out></td>
 			            <td><c:out value="${producto.idCategoria}"></c:out></td>
-			            <td><c:out value="${producto.nomrbe}"></c:out></td>
+			            <td><c:out value="${producto.nombre}"></c:out></td>
 			            <td><c:out value="${producto.descripcion}"></c:out></td>
 			            <td><c:out value="${producto.precio}"></c:out></td>
 			            <td><c:out value="${producto.stock}"></c:out></td>
