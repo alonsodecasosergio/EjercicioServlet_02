@@ -4,7 +4,9 @@ dataModelEntities\Categorias.class
 servlet\AltaUsuarios.class
 servlet\AltaCategorias.class
 servlet\VistaProductos.class
+service\RolService.class
 servlet\VistaCategorias.class
+service\UsuariosService.class
 dataModelDAO\UsuariosDAO.class
 servlet\Loggin.class
 dataModelDAO\RolesDAO.class

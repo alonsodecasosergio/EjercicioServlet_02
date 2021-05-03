@@ -25,11 +25,6 @@
 			        </tr>
 			    </c:forEach>
 			</table>
-			<p class="center">
-				<!-- <input type="submit" value="Comprar" id="button-create" />
-				<input type="reset" value="Limpiar" id="button-clean" /> -->
-				<button type="submit" formaction="PanelPrincipal.jsp">Volver</button>
-			</p>
 		</form>
 		
 	</body>

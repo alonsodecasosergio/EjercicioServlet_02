@@ -5,13 +5,18 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import dataModelEntities.Roles;
+import dataModelUtils.HibernateUtil;
 import servlet.Loggin;
 
 public abstract class RolesDAO {
 	
 	private static Logger logger = LogManager.getLogger(Loggin.class);
+	
+	static SessionFactory sessionFactory;
+	static Session s = HibernateUtil.getSessionFactory().openSession();
 	
 	//INSERCCION DE UN NUEVO ROL
 	public static void insertRol(Session s, Roles rol) {
@@ -32,7 +37,7 @@ public abstract class RolesDAO {
 	}
 	
 	//OBTENCION DE UN ROL SEGUN SU ID
-	public static Roles getRol(Session s, int codigoRol) {
+	public static Roles getRol(int codigoRol) {
 		logger.debug("Peticion del rol con id: " + codigoRol);
 		
 		Roles rol = s.get(Roles.class, codigoRol);

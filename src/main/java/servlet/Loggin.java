@@ -25,6 +25,8 @@ import dataModelDAO.UsuariosDAO;
 import dataModelEntities.Roles;
 import dataModelEntities.Usuarios;
 import dataModelUtils.HibernateUtil;
+import service.RolService;
+import service.UsuariosService;
 
 /**
  * Servlet implementation class Loggin
@@ -65,14 +67,6 @@ public class Loggin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//OBTIENE LOS PARAMETROS DE LA URL
-		String parametroUsuario = request.getParameter("login");
-		String parametroPassword = request.getParameter("password");
-		
-		logger.debug("Intento de acceso con: " + parametroUsuario + " " + parametroPassword);
-		
-		//LOS PASA AL METODO QUE COMPROBARA SI SON CORRECTOS
-		comprobarUsuario(parametroUsuario, parametroPassword, response, request);
 		
 	}
 
@@ -81,57 +75,34 @@ public class Loggin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-	
-	public void comprobarUsuario(String usuario, String password, HttpServletResponse response, HttpServletRequest request) throws IOException, ServletException {
 		
-		//OBTENCION DEL USUARIO CON ESE EMAIL
-		Usuarios user = UsuariosDAO.getUsuarioToEmail(session, usuario);
-		PrintWriter out = response.getWriter();
+		//OBTIENE LOS PARAMETROS DE LA URL
+		String parametroUsuario = request.getParameter("login");
+		String parametroPassword = request.getParameter("password");
 		
-		//SI EL USUARIO NO EXISTE SALTA UN MENSAJE SI EXISTE COMPRUEBA EL USUARIO Y CONTRASEÑA
-		if(user != null) {
+		logger.debug("Intento de acceso con: " + parametroUsuario + " " + parametroPassword);
+		
+		
+		if(UsuariosService.comprobarUsuario(parametroUsuario, parametroPassword)) {
 			
-			if(user.getEmail().equals(usuario) && user.getClave().equals(password)) {
-				
-				//SI ESTA BIEN ESCRIBE UN MENSAJE CON EL NOMBRE DEL USUARIO
-				
-				logger.debug("El usuario ha sido introducido correctamente");
-				
-				Date date = new Date();
-				DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-				System.out.println("Hora y fecha: "+hourdateFormat.format(date));
-				
-				Roles rol = RolesDAO.getRol(session, user.getRol());
-				
-				HttpSession session = request.getSession(true);
-				session.setAttribute("clientRol", rol.getRol());
-				session.setAttribute("clientName", user.getNombre() + " " + user.getApellido1() + " " + user.getApellido2() + " | " + hourdateFormat.format(date));
-				
-				if(rol.getRol().equals("Admin")) {
-					request.getRequestDispatcher("MenuPrincipalAdmin.jsp").forward(request, response);
-					session.setAttribute("Menu", "MenuPrincipalAdmin.jsp");
-					
-				}else if(rol.getRol().equals("Empleado")) {
-					request.getRequestDispatcher("MenuPrincipalEmpleado.jsp").forward(request, response);
-					session.setAttribute("Menu", "MenuPrincipalEmpleado.jsp");
-				}else {
-					
-					request.getRequestDispatcher("MenuPrincipalCliente.jsp").forward(request, response);
-					session.setAttribute("Menu", "MenuPrincipalCliente.jsp");
-				}
-				
-			}else {				
-				logger.debug("El usuario no es correcto");
-			}
+			Usuarios user = UsuariosService.obtenerUsuario(parametroUsuario, parametroPassword);
 			
-		}else {
-
-			//SI NO ES CORRECTO INFORMA DE QUE NO PUEDE ACCEDER
-			logger.debug("El usuario no es correcto");
+			Date date = new Date();
+			DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+			System.out.println("Hora y fecha: "+hourdateFormat.format(date));
+			
+			Roles rol = RolService.getRol(user.getRol());
+			
+			HttpSession session = request.getSession(true);
+			session.setAttribute("clientRol", rol.getRol());
+			session.setAttribute("clientName", user.getNombre() + " " + user.getApellido1() + " " + user.getApellido2() + " | " + hourdateFormat.format(date));
+			
+			String redireccion = UsuariosService.getRedireccion(rol.getRol());
+			
+			session.setAttribute("Menu", redireccion);
+			request.getRequestDispatcher(redireccion).forward(request, response);
+			
+			
 		}
-		
 	}
-
 }

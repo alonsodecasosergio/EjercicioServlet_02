@@ -5,13 +5,18 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import dataModelEntities.Usuarios;
+import dataModelUtils.HibernateUtil;
 import servlet.Loggin;
 
 public abstract class UsuariosDAO {
 	
 	private static Logger logger = LogManager.getLogger(Loggin.class);
+	
+	static SessionFactory sessionFactory;
+	static Session s = HibernateUtil.getSessionFactory().openSession();
 	
 	//INSERCCION DE UN NUEVO USUARIO
 	public static void insertUsuarios(Session s, Usuarios usuario) {
@@ -55,7 +60,7 @@ public abstract class UsuariosDAO {
 		logger.debug("Borrado del usuario: " + usuario.getId() + " " + usuario.getNombre());
 	}
 	
-	public static Usuarios getUsuarioToEmail(Session s, String email) {
+	public static Usuarios getUsuarioToEmail(String email) {
 		
 		logger.debug("Peticion de usuario con email: " + email);
 		
