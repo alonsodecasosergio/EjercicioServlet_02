@@ -22,6 +22,7 @@ import dataModelDAO.UsuariosDAO;
 import dataModelEntities.Roles;
 import dataModelEntities.Usuarios;
 import dataModelUtils.HibernateUtil;
+import service.UtilService;
 
 /**
  * Servlet implementation class AltaUsuarios
@@ -76,7 +77,7 @@ public class AltaUsuarios extends HttpServlet {
 		int rol = Integer.parseInt(request.getParameter("rol"));
 		
 		String email = request.getParameter("email");
-		String clave = request.getParameter("clave");
+		String clave = UtilService.encryptedPassword(request.getParameter("clave").toString());
 		String nombre = request.getParameter("nombre");
 		String apellido1 = request.getParameter("apellido1");
 		String apellido2 = request.getParameter("apellido2");

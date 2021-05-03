@@ -18,7 +18,10 @@ public class UsuariosService {
 		
 		if(user != null) {
 			
-			if(user.getEmail().equals(email) && user.getClave().equals(password)) {
+			System.out.println(user.getClave());
+			System.out.println(password);
+			
+			if(user.getEmail().equals(email) && UtilService.desencryptedPassword(user.getClave(), password)) {
 				
 				logger.debug("El usuario correcto");
 				

@@ -9,6 +9,7 @@ servlet\VistaCategorias.class
 service\UsuariosService.class
 dataModelDAO\UsuariosDAO.class
 servlet\Loggin.class
+service\UtilService.class
 dataModelDAO\RolesDAO.class
 servlet\AltasRoles.class
 dataModelEntities\Roles.class
