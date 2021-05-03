@@ -1,11 +1,9 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -20,8 +18,6 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import dataModelDAO.RolesDAO;
-import dataModelDAO.UsuariosDAO;
 import dataModelEntities.Roles;
 import dataModelEntities.Usuarios;
 import dataModelUtils.HibernateUtil;

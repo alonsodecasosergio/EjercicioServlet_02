@@ -1,40 +1,28 @@
 package service;
 
-import org.jasypt.util.password.BasicPasswordEncryptor;
-import org.jasypt.util.password.PasswordEncryptor;
+import org.apache.commons.codec.binary.Base64;
 
 public class UtilService {
 
 	
 	public static String encryptedPassword(String password) {
 		
-		PasswordEncryptor encryptor = new BasicPasswordEncryptor();
-        
-        String encryptedPassword = encryptor.encryptPassword(password);
-        
-        return encryptedPassword;
+		Base64 base64 = new Base64();
+
+		//ENCRIPTAR
+		String encriptada = new String(base64.encode(password.getBytes()));
+		
+		return encriptada;
 		
 	}
 	
-	public static boolean desencryptedPassword(String userPassword, String password) {
+	public static String desencryptedPassword(String userPassword) {
 		
-		PasswordEncryptor encryptor = new BasicPasswordEncryptor();
+		Base64 base64 = new Base64();
+		String desencriptado = new String(base64.decode(userPassword.getBytes()));
         
-        
-        if (encryptor.checkPassword(password, userPassword )) {
-            
-        	return true;
-        }
-        
-        return false;
-		
-	}
-	
-	public static void main(String[] args) {
-		
-		System.out.println(encryptedPassword("Sergio"));
-		
-		System.out.print(desencryptedPassword(encryptedPassword("Sergio"),"Sergio"));
+       
+        return desencriptado;
 		
 	}
 }
