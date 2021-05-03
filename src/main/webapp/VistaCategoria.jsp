@@ -12,12 +12,12 @@
 		<%@ include file="Cabecera.jsp" %>	
 		
 		<form action="" method="post">
-			<table class="table" border="2">
-				<tr>
-				    <th>Id</th>
+			<table class="table table-striped" border="2">
+				<thead class="table-dark">
+					<th>Id</th>
 				    <th>Nombre</th>
 				    <th>Descripcion</th>
-			    </tr>
+	  			</thead>
 			    <c:forEach items="${sessionScope.categoriasList}" var="categoria" varStatus="status" begin="0" end="${sessionScope.categoriasList.size() - 1}">
 			        <tr>
 			        

@@ -12,9 +12,10 @@
 		<%@ include file="Cabecera.jsp" %>
 		
 		<form action="" method="post">
-			<table class="table" border="2">
-				<tr>
-				    <th>Id</th>
+			<table  class="table table-striped" border="2">
+				<thead class="table-dark">
+					<tr>
+				  	  	<th>Id</th>
 				    <th>Id Categoria</th>
 				    <th>Nombre</th>
 				    <th>Descripcion</th>
@@ -23,7 +24,8 @@
 				    <th>Fecha Alta</th>
 				    <th>Fecha Baja</th>
 				    <th>Impuesto</th>
-			    </tr>
+			   		 </tr>
+	  			</thead>
 			    <c:forEach items="${sessionScope.productosList}" var="producto" varStatus="status" begin="0" end="${sessionScope.productosList.size() - 1}">
 			        <tr>
 			        
