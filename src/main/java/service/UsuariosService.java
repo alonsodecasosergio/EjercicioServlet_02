@@ -28,7 +28,7 @@ public class UsuariosService {
 				return user;
 				
 			}else {				
-				logger.debug("El usuario no es correcto");
+				logger.debug("La contraseña del usuario no es correcta");
 			}
 			
 		}else {
@@ -48,7 +48,7 @@ public class UsuariosService {
 		
 		if(user != null) {
 			
-			if(user.getEmail().equals(email) && user.getClave().equals(password)) {
+			if(user.getEmail().equals(email) && UtilService.desencryptedPassword(user.getClave()).equals(password)) {
 				
 				logger.debug("El usuario correcto");
 				

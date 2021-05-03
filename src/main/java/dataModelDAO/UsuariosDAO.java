@@ -69,6 +69,9 @@ public abstract class UsuariosDAO {
 									.setParameter("email", email)
 									.setMaxResults(1)
 									.uniqueResult();
+		
+		System.out.println("------------------"+usuario.getClave());
+		
 		return usuario;
 		
 		

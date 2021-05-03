@@ -15,12 +15,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import dataModelEntities.Roles;
 import dataModelEntities.Usuarios;
-import dataModelUtils.HibernateUtil;
 import service.RolService;
 import service.UsuariosService;
 
@@ -33,9 +30,6 @@ public class Loggin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static Logger logger = LogManager.getLogger(Loggin.class);
-	
-	static SessionFactory sessionFactory;
-	static Session session;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -53,8 +47,6 @@ public class Loggin extends HttpServlet {
 		
 		//INFORMACION DE INICIO DEL PROGRAMA Y INICIO DE LA SESSION DE HIBERNATE
 		logger.info("%1$s: >>>>>> Main execution started. MOSTRAR DATOS");
-		
-		session = HibernateUtil.getSessionFactory().openSession();
 	}
 
 	/**
@@ -99,6 +91,8 @@ public class Loggin extends HttpServlet {
 			request.getRequestDispatcher(redireccion).forward(request, response);
 			
 			
+		}else {
+			response.sendRedirect("login.html");
 		}
 	}
 }
