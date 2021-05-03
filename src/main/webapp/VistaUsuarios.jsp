@@ -12,7 +12,7 @@
 		<%@ include file="Cabecera.jsp" %>
 		
 		<form action="" method="post">
-			<table border="2">
+			<table class="table" border="2">
 				<tr>
 				    <th>Id</th>
 				    <th>Rol</th>
