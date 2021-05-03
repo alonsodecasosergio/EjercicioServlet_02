@@ -10,10 +10,9 @@
 	<body>
 		<%@ include file="Cabecera.jsp" %>
 		
-		</br>
 		<form action="" method="post">
 		
-			<button type="submit" formaction="VistaProductos">Listado de productos</button>
+			<button type="submit"  class="btn btn-outline-primary" formaction="VistaProductos">Listado de productos</button>
 		</form>
 	</body>
 </html>
