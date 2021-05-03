@@ -12,11 +12,14 @@
 		<%@ include file="Cabecera.jsp" %>	
 		
 		<form action="" method="post">
-			<table border="2">
-				<tr>
-				    <th>Id</th>
-				    <th>Nombre</th>
-			    </tr>
+			<table class="table table-striped" border="2">
+				<thead class="table-dark">
+					<tr>
+				  	  	<th>Id</th>
+				    	<th>Nombre</th>
+			   		 </tr>
+	  			</thead>
+				
 			    <c:forEach items="${sessionScope.rolesList}" var="rol" varStatus="status" begin="0" end="${sessionScope.rolesList.size() - 1}">
 			        <tr>
 			        

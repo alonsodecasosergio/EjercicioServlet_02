@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*, servlet.*" %>
+<%@ page import="java.util.*, servlet.*, service.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,21 @@
 	    <input type="text" placeholder="Segundo Apellido" name="apellido2" required> </br>
 	    <input type="text" placeholder="Direccion" name="direccion" required> </br>
 	    <input type="text" placeholder="Localidad" name="localidad" required> </br>
+	    <select name="provincia" required>
+	    	<%
+	    		ArrayList<String> provincias = UtilService.getAllProvincias();
+	    		
+	    		for(String nombre : provincias){
+	    	%>
+	    		<option value="<%=nombre %>"><%=nombre %></option>
+	    	<%
+	    		}
+	    	%>
+	    </select>
+	    
 	    <input type="text" placeholder="Provincia" name="provincia" required> </br>
+	    
+	    
 	    <input type="text" placeholder="Telefono" name="telefono" required> </br>
 	    <input type="text" placeholder="DNI" name="dni" required> </br>
 	    

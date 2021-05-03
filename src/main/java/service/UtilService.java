@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -53,7 +53,7 @@ public class UtilService {
             //si la respuesta del servidor es distinta al codigo 200 lanzaremos una Exception
             throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
         }
-        BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
         //creamos un StringBuilder para almacenar la respuesta del web service
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -71,8 +71,21 @@ public class UtilService {
         	provincias.add(pro.getNm());
         	
         }
+        
+        Collections.sort(provincias);
 
         conn.disconnect();
 		return provincias;
+	}
+	
+	public static void main(String[] args) {
+		
+		try {
+			getAllProvincias();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

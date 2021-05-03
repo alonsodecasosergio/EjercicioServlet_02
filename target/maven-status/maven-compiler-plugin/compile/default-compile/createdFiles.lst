@@ -15,6 +15,7 @@ servlet\AltasRoles.class
 dataModelEntities\Roles.class
 dataModelUtils\HibernateUtil.class
 servlet\AltaProductos.class
+dataModelEntities\Provincia.class
 servlet\VistaRoles.class
 dataModelDAO\CategoriasDAO.class
 servlet\CerrarSesion.class
