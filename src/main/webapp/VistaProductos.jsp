@@ -7,6 +7,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Vista Productos</title>
+		<link href="css/productCard.css" rel="stylesheet">
 	</head>
 	<body>			
 		<%@ include file="Cabecera.jsp" %>
@@ -38,10 +39,9 @@
 			            <td><c:out value="${producto.fechaAlta}"></c:out></td>
 			            <td><c:out value="${producto.fechaBaja}"></c:out></td>
 			            <td><c:out value="${producto.impuesto}"></c:out></td>          
-			        </tr>
-			    </c:forEach>
+			        </tr>   
+				</c:forEach>
 			</table>
-		</form>
-		
+		</form>		
 	</body>
 </html>

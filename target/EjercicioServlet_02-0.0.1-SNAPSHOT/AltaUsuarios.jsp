@@ -29,10 +29,7 @@
 	    	<%
 	    		}
 	    	%>
-	    </select>
-	    
-	    <input type="text" placeholder="Provincia" name="provincia" required> </br>
-	    
+	    </select></br>    
 	    
 	    <input type="text" placeholder="Telefono" name="telefono" required> </br>
 	    <input type="text" placeholder="DNI" name="dni" required> </br>
