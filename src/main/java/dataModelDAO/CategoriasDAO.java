@@ -38,7 +38,7 @@ public abstract class CategoriasDAO {
 	}
 	
 	//OBTENCION DE UNA CATEGORIA SEGUN SU ID
-	public static Categorias getCategoria(Session s, int codigoCategoria) {
+	public static Categorias getCategoria(int codigoCategoria) {
 		logger.debug("Peticion dela categoria con id: " + codigoCategoria);
 		
 		Categorias categoria = s.get(Categorias.class, codigoCategoria);
@@ -48,7 +48,7 @@ public abstract class CategoriasDAO {
 	}
 	
 	//BORRADO DE UN OBJETO CATEGORIA
-	public static void deleteCategoria(Session s, int codigoCategoria) {
+	public static void deleteCategoria(int codigoCategoria) {
 		
 		Categorias categoria = s.get(Categorias.class, codigoCategoria);
 		
@@ -58,7 +58,7 @@ public abstract class CategoriasDAO {
 	}
 	
 	//ACTUALIZACION DEL OBJETO CATEGORIA
-	public static void updateCategoria(Session s, int codigoCategoria, Categorias nuevaCategoria) {
+	public static void updateCategoria(int codigoCategoria, Categorias nuevaCategoria) {
 		
 		Categorias categoria = s.get(Categorias.class, codigoCategoria);
 		

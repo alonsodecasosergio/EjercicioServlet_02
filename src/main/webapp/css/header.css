@@ -196,7 +196,7 @@ section {
 
 .super_container {
     width: 100%;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .prlx_parent {
@@ -242,6 +242,7 @@ section {
     width: 100%;
     z-index: 10
 }
+
 
 .top_bar {
     width: 100%;

@@ -52,11 +52,14 @@
 		            <div class="card h-100">
 		                <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
 		                <div class="card-body">
-		                    <h4 class="card-title"><a href="#!"><%=producto.getNombre() %></a></h4>
+		                    <h4 class="card-title"><a href="#!"><%=producto.getNombre()%></a></h4>
 		                    <h5><%=producto.getPrecio() %> €</h5>
 		                    <p class="card-text"><%=producto.getDescripcion() %></p>
 		                </div>
-		                <div class="card-footer"><small class="text-muted"> Stock: <%=producto.getStock() %></small></div>
+		                <div class="card-footer d-flex align-items-right ">
+		                	<small class="col align-self-center text-muted"> Stock: <%=producto.getStock() %></small>
+		                	<button class="col btn btn-outline-primary">Comprar</button>
+		                </div>
 		            </div>
 		        </div>
 		        <%
@@ -64,5 +67,6 @@
 		        %>
 			</div>
 		</div>
+		<%@ include file="footer.jsp" %>	
 	</body>
 </html>

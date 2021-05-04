@@ -35,7 +35,6 @@
 	<body>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 		<div class="super_container">
-		    <!-- Header -->
 		    <header class="header">
 		        <!-- Top Bar -->
 		        <div class="top_bar">
@@ -45,13 +44,13 @@
 		                            <div class="top_bar_user">
 		                                <div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
 		                                <div><a href="#">Registrar</a></div>
-		                                <div><a href="#">Acceder</a></div>
+		                                <div><a href="login.html">Acceder</a></div>
 		                            </div>
 		                        </div>
 		                    </div>
 		                </div>
 		            </div>
-		        </div> <!-- Header Main -->
+       	</div> <!-- Header Main -->
 		        
 		        <nav class="main_nav">
 		            <div class="container">
