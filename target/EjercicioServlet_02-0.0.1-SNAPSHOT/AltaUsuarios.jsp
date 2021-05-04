@@ -21,7 +21,7 @@
 	    	<%
 	    		}
 	    	%>
-	    </select>
+	    </select></br>
 	    <input type="text" placeholder="Email" name="email" required> </br>
 	    <input type="password" placeholder="Clave" name="clave" required> </br>
 	    <input type="text" placeholder="Nombre" name="nombre" required> </br>
