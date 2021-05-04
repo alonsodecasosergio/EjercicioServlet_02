@@ -15,9 +15,8 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import dataModelDAO.ProductosDAO;
 import dataModelEntities.Productos;
-import dataModelUtils.HibernateUtil;
+import service.ProductosService;
 
 /**
  * Servlet implementation class VistaProductos
@@ -45,7 +44,6 @@ public class VistaProductos extends HttpServlet {
 		
 		logger.info("%1$s: >>>>>> Main execution started.VISUALIZAR PRODUCTOS");
 		
-		session = HibernateUtil.getSessionFactory().openSession();
 	}
 
 	/**
@@ -62,7 +60,7 @@ public class VistaProductos extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		List<Productos> productosList = ProductosDAO.getAllProductos(session);
+		List<Productos> productosList = ProductosService.getAllProductos();
 
 
 		HttpSession session = request.getSession(true);

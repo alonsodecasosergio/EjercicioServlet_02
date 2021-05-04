@@ -99,7 +99,7 @@
 		            </div>
 		        </nav>
 		    </header>
-		    <div style="height: 700px"> </div>
 		</div>
+		<script src="header.js"></script>
 	</body>
 </html>

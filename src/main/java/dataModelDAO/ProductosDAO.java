@@ -5,13 +5,18 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import dataModelEntities.Productos;
+import dataModelUtils.HibernateUtil;
 import servlet.Loggin;
 
 public abstract class ProductosDAO {
 	
 	private static Logger logger = LogManager.getLogger(Loggin.class);
+	
+	static SessionFactory sessionFactory;
+	static Session s = HibernateUtil.getSessionFactory().openSession();
 	
 	//INSERCCION DE UN NUEVO PRODUCTO
 	public static void insertProducto(Session s, Productos producto) {
@@ -20,7 +25,7 @@ public abstract class ProductosDAO {
 	}
 	
 	//OBTENCION DE TODOS LOS PRODUCTOS DE LA TABLA
-	public static List<Productos> getAllProductos(Session s){
+	public static List<Productos> getAllProductos(){
 		
 		logger.debug("Obtencion de los datos de la tabla productos");
 		
