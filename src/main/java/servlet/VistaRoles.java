@@ -46,8 +46,6 @@ public class VistaRoles extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		logger.info("%1$s: >>>>>> Main execution started.VISUALIZAR ROLES");
-		
-		session = HibernateUtil.getSessionFactory().openSession();
 	}
 
 	/**
@@ -64,7 +62,7 @@ public class VistaRoles extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		List<Roles> rolesList = RolesDAO.getAllRoles(session);
+		List<Roles> rolesList = RolesDAO.getAllRoles();
 		
 		HttpSession session = request.getSession(true);
 		session.setAttribute("rolesList",  rolesList);

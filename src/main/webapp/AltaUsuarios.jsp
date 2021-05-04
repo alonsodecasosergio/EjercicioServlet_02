@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*, servlet.*, service.*" %>
+<%@ page import="java.util.*, servlet.*, service.*, dataModelEntities.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,17 @@
 		<%@ include file="Cabecera.jsp" %>
 		
 		<form id="altaUsuarios" action="AltaUsuarios" method="post">
-	    <input type="number" name="rol" placeholder="ID Rol" required> </br>
+	    <select name="rol" required>
+		<%
+	    		ArrayList<Roles> roles = RolService.getAllRoles();
+	    		
+	    		for(Roles rol : roles){
+	    	%>
+	    		<option value="<%=rol.getId() %>"><%=rol.getRol() %></option>
+	    	<%
+	    		}
+	    	%>
+	    </select></br>
 	    <input type="text" placeholder="Email" name="email" required> </br>
 	    <input type="password" placeholder="Clave" name="clave" required> </br>
 	    <input type="text" placeholder="Nombre" name="nombre" required> </br>

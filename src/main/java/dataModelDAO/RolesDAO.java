@@ -25,7 +25,7 @@ public abstract class RolesDAO {
 	}
 	
 	//OBTENCION DE TODOS LOS ROLES DE LA TABLA
-	public static List<Roles> getAllRoles(Session s){
+	public static List<Roles> getAllRoles(){
 		
 		logger.debug("Obtencion de los datos de la tabla roles");
 		

@@ -5,13 +5,19 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import dataModelEntities.Categorias;
+import dataModelUtils.HibernateUtil;
 import servlet.Loggin;
 
 public abstract class CategoriasDAO {
 	
 	private static Logger logger = LogManager.getLogger(Loggin.class);
+	
+	static SessionFactory sessionFactory;
+	static Session s = HibernateUtil.getSessionFactory().openSession();
+	
 	
 	//INSERCCION DE UNA NUEVA CATEGORIA
 	public static void insertCategoria(Session s, Categorias categoria) {
@@ -20,7 +26,7 @@ public abstract class CategoriasDAO {
 	}
 	
 	//OBTENCION DE TODAS LAS CATEGORIA DE LA TABLA
-	public static List<Categorias> getAllCategorias(Session s){
+	public static List<Categorias> getAllCategorias(){
 		
 		logger.debug("Obtencion de los datos de la tabla categorias");
 		

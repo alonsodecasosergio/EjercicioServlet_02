@@ -46,7 +46,6 @@ public class VistaCategorias extends HttpServlet {
 		
 		logger.info("%1$s: >>>>>> Main execution started.VISUALIZAR CATEGORIAS");
 		
-		session = HibernateUtil.getSessionFactory().openSession();
 	}
 
 	/**
@@ -63,7 +62,7 @@ public class VistaCategorias extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		List<Categorias> categoriasList = CategoriasDAO.getAllCategorias(session);
+		List<Categorias> categoriasList = CategoriasDAO.getAllCategorias();
 		
 		HttpSession session = request.getSession(true);
 		session.setAttribute("categoriasList",  categoriasList);
