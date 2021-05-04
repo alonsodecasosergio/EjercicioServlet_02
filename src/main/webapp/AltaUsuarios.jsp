@@ -11,17 +11,24 @@
 		<%@ include file="Cabecera.jsp" %>
 		
 		<form id="altaUsuarios" action="AltaUsuarios" method="post">
-	    <select name="rol" required>
 		<%
-	    		ArrayList<Roles> roles = RolService.getAllRoles();
-	    		
-	    		for(Roles rol : roles){
-	    	%>
-	    		<option value="<%=rol.getId() %>"><%=rol.getRol() %></option>
-	    	<%
-	    		}
-	    	%>
-	    </select></br>
+			if(session.getAttribute("clientRol") != null){
+				%> <select name="rol" required>
+					<%
+				    		ArrayList<Roles> roles = RolService.getAllRoles();
+				    		
+				    		for(Roles rol : roles){
+				    	%>
+				    		<option value="<%=rol.getId() %>"><%=rol.getRol() %></option>
+				    	<%
+				    		}
+				    	%>
+				    </select></br>
+	    <%
+			}else{
+				%><option selected="true" value=3></option><%
+			}
+		%>
 	    <input type="text" placeholder="Email" name="email" required> </br>
 	    <input type="password" placeholder="Clave" name="clave" required> </br>
 	    <input type="text" placeholder="Nombre" name="nombre" required> </br>

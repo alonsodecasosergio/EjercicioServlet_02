@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -73,9 +74,15 @@ public class AltaUsuarios extends HttpServlet {
 		
 		logger.debug("Inserccion de un nuevo usuario");
 		
-		//CREAR EL OBJETO USUARIO CON LOS PARAMETROS PASADOS
-		int rol = Integer.parseInt(request.getParameter("rol"));
+		HttpSession session = request.getSession(true);
 		
+		int rol = 3;
+		
+		if(session.getAttribute("clientRol") != null) {
+			rol = Integer.parseInt(request.getParameter("rol"));
+		}
+		
+		//CREA UN OBJETO CON LOS PARAMETROS PASADOS
 		String email = request.getParameter("email");
 		String clave = UtilService.encryptedPassword(request.getParameter("clave").toString());
 		String nombre = request.getParameter("nombre");
